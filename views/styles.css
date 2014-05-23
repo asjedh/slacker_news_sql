@@ -1,0 +1,127 @@
+body {margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 0;
+      margin-top: 0;
+      width: 80%;
+      font-family: Verdana, sans-serif;
+}
+
+.background_color {background-color: #F6F6Ef}
+
+.header_container { background-color: #FF6600;
+                    margin: 0px;
+                    padding: 0px;
+                    vertical-align: middle;
+                    font-family: Verdana;
+                    }
+
+
+#logo { margin: 2px;
+        padding: 0px;
+        border: 1px solid white;
+        height: 20px;
+        width: auto;
+        vertical-align: inherit;
+}
+
+
+#title {display: inline;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        vertical-align: inherit;
+        font-family: Verdana;
+}
+
+
+.top_nav {margin: 0;
+          padding-left: 8px;
+          padding-bottom: 0;
+          padding-right: 0;
+          padding-top: 0;
+          display: inline;
+          vertical-align: text-bottom;
+}
+
+
+
+.top_nav li { margin-left: auto;
+              margin-right: auto;
+              font-size: 14px;
+              vertical-align: inherit;
+              font-family: Verdana;
+}
+
+.top_nav li a,
+.top_nav li {display: inline;
+            font: 12px Verdana;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            vertical-align: inherit;
+            font-family: Verdana;
+
+}
+
+.articles li {color: gray;
+              font-size: 11px;
+              padding: 0;
+              margin: 0;
+            }
+
+
+.articles li a,
+.articles li h3 {color: black;
+                text-decoration: none;
+                font-size: 14px;
+                font-family: Verdana;}
+
+.article_info {padding-left: 16px;
+              margin: 0;}
+
+
+
+
+
+
+
+
+hr {background-color: #FF6600;
+    border: none;
+    height: 2px;
+    color: #FF6600;
+    }
+
+.footer_nav li a,
+.footer_nav li {list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+                display: inline;
+                font-size: 12px;
+                text-decoration: none;
+                color: black;
+              }
+
+.footer_nav {display: inline;
+            text-align: center;
+            padding: 0;
+            margin: 0;}
+
+.footer_container {text-align: center }
+
+.search {font-size: 12px;
+         color: gray;
+         margin: 0;
+         padding: 12px;
+         }
+
+
+
+
+
+
+
+
+
+
