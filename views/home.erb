@@ -33,9 +33,10 @@
         <div class="articles_container">
 
           <ol class = "articles">
-            <li> &#x25B2; <a href="">Title of Article</a><br>
-                          <span class="article_info"> points, user, time, comments</span>
-
+            <% @articles.each do |article| %>
+            <li> &#x25B2; <a href="<%= article["url"] %>"><%= article["title"] %></a><br>
+                          <span class="article_info"> <%= article["description"] %></span>
+            <% end %>
             </li>
           </ol>
 

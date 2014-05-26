@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Slacker News</title>
+    <link rel="shortcut icon" href="http://cdn.appappeal.com/pictures/13675/logo.png">
+    <link rel="stylesheet" href="styles.css" type = "text/css">
+  </head>
+
+  <body>
+
+      <div class="background_color">
+        <div class = "header_container">
+
+          <img src = "http://cdn.appappeal.com/pictures/13675/logo.png" id="logo">
+
+          <h3 id = "title">Slacker News</h3>
+
+          <ul class = "top_nav">
+            <li> <a href="">new</a></li>
+            <li> | </li>
+            <li> <a href="">comments</a></li>
+            <li> | </li>
+            <li> <a href="">ask</a></li>
+            <li> | </li>
+            <li> <a href="">jobs</a></li>
+            <li> | </li>
+            <li> <a href="">submit</a></li>
+          </ul>
+
+        </div>
+
+
+
+
+        <%= yield %>
+
+
+
+        <hr class="line">
+
+        <div class="footer_container">
+
+          <ul class="footer_nav">
+            <li> <a href="">Lists</a></li>
+            <li> | </li>
+            <li> <a href="">RSS</a></li>
+            <li> | </li>
+            <li> <a href="">Bookmarklet</a></li>
+            <li> | </li>
+            <li> <a href="">Guidelines</a></li>
+            <li> | </li>
+            <li> <a href="">FAQ</a></li>
+            <li> | </li>
+            <li> <a href="">DMCA</a></li>
+            <li> | </li>
+            <li> <a href="">News</a></li>
+            <li> | </li>
+            <li> <a href="">Feature Requests</a></li>
+            <li> | </li>
+            <li> <a href="">Bugs</a></li>
+            <li> | </li>
+            <li> <a href="">Y Combinator</a></li>
+            <li> | </li>
+            <li> <a href="">Apply</a></li>
+            <li> | </li>
+            <li> <a href="">Library</a></li>
+          </ul>
+
+          <form class="search">Search: <input type ="text" name = "search"></form>
+
+        </div>
+    </div>
+
+  </body>
+</html>
