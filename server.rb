@@ -1,35 +1,52 @@
 require 'sinatra'
 require 'csv'
 require 'pry'
+require 'pg'
+### METHODS
 
 
-def save_article_info_to_csv(article)
-  CSV.open("articles_submitted.csv", "a",
-            :write_headers => true,
-            :headers => ["title","url","description"]) do |articles_database|
-    articles_database << article
+def db_conn
+  begin
+    connection = PG.connect(dbname: 'slacker_news')
+    yield(connection)
+  ensure
+    connection.close
   end
 end
 
-def import_articles_database(file_path)
-  articles = []
-  CSV.foreach(file_path, :headers => true) do |article|
-    articles << article.to_hash
+def save_article_to_db(article_info_array)
+  db_conn do |conn|
+    conn.exec_params("INSERT INTO articles (title, url, description)
+    VALUES ($1,$2,$3)", article_info_array)
   end
-  articles
 end
 
-get '/' do
-  @articles = import_articles_database("articles_submitted.csv")
+def import_articles_from_db
+  db_conn do |conn|
+    conn.exec("SELECT * FROM articles")
+  end.to_a
+end
+
+
+
+### PATHS
+get '/articles' do
+  @articles = import_articles_from_db
   erb :home
 end
 
-get '/submit' do
+get '/articles/new' do
   erb :'submit/submit', layout: :'submit/layout'
 end
 
-post '/submit' do
+post '/articles/new' do
   new_article = [params[:title], params[:url], params[:description]]
   save_article_info_to_csv(new_article)
   "Thank you! You're response has been recorded!"
+  redirect '/articles'
 end
+
+get '/' do
+  redirect '/articles'
+end
+
