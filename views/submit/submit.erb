@@ -1,17 +1,20 @@
+
+<h4> <%= "#{@error_message}" if @error_message != nil %></h4>
+
 <form action="/articles/new" method="post" class ="submission">
 
 <label for ="title">title</label>
-<input type="text" name="title"/>
+<input type="text" name="title"/ required>
 
 <br>
 
 <label for ="url">url</label>
-<input type="text" name="url"/>
+<input type="text" name="url"/ required>
 
 <br>
 
 <label for="description" class="submission_label">description</label>
-<textarea name="description"></textarea>
+<textarea name="description" required></textarea>
 
 <br>
 

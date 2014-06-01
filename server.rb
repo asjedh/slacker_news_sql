@@ -2,6 +2,9 @@ require 'sinatra'
 require 'csv'
 require 'pry'
 require 'pg'
+require 'net/http'
+require 'addressable/uri'
+
 ### METHODS
 
 
@@ -16,8 +19,8 @@ end
 
 def save_article_to_db(article_info_array)
   db_conn do |conn|
-    conn.exec_params("INSERT INTO articles (title, url, description)
-    VALUES ($1,$2,$3)", article_info_array)
+    conn.exec_params("INSERT INTO articles (title, url, description, created_at)
+    VALUES ($1,$2,$3, NOW())", article_info_array)
   end
 end
 
@@ -25,6 +28,14 @@ def import_articles_from_db
   db_conn do |conn|
     conn.exec("SELECT * FROM articles")
   end.to_a
+end
+
+SCHEMES = %w(http https)
+def valid_url?(url)
+  parsed = Addressable::URI.parse(url) or return false
+  SCHEMES.include?(parsed.scheme)
+rescue Addressable::URI::InvalidURIError
+  false
 end
 
 
@@ -40,10 +51,19 @@ get '/articles/new' do
 end
 
 post '/articles/new' do
-  new_article = [params[:title], params[:url], params[:description]]
-  save_article_info_to_csv(new_article)
-  "Thank you! You're response has been recorded!"
-  redirect '/articles'
+  url = params[:url]
+  if !valid_url?(url)
+    @error_message = "Please enter a valid URL!"
+    redirect back
+  elsif #description is less than 20 char
+    #error message and go back
+    redirect back
+  else #we're good to go... put the article in the database!
+
+    new_article = [params[:title], params[:url], params[:description]]
+    save_article_to_db(new_article)
+    redirect '/articles'
+  end
 end
 
 get '/' do
